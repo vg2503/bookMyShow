@@ -1,9 +1,9 @@
 package org.example.bookmyshow.controllers;
 
 import org.example.bookmyshow.services.BookingService;
-import org.example.bookmyshow.DTOs.CreateBookingRequestDTO;
-import org.example.bookmyshow.DTOs.CreateBookingResponseDTO;
-import org.example.bookmyshow.DTOs.ResponseStatus;
+import org.example.bookmyshow.dtos.CreateBookingRequestDTO;
+import org.example.bookmyshow.dtos.CreateBookingResponseDTO;
+import org.example.bookmyshow.dtos.ResponseStatus;
 import org.example.bookmyshow.models.Booking;
 import org.springframework.stereotype.Controller;
 

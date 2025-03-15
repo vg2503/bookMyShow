@@ -63,7 +63,7 @@ public class BookingService {
             showSeat.setSeatStatus(SeatStatus.BLOCKED);
             showSeatRepository.save(showSeat);
         }
-        List<ShowSeatType> showSeatTypes = showSeatTypeRepository.findAllByShow(show.getId());
+        List<ShowSeatType> showSeatTypes = showSeatTypeRepository.findAllByShow(show);
         double bookingAmount = priceCalculator.calculatePrice(showSeats, showSeatTypes);
 
         List<Payment> payments = new ArrayList<>();
@@ -78,8 +78,8 @@ public class BookingService {
         //save the changes for Booking in db.
         //create the booking with Payment status as Pending.
         //return the booking object
-        return  bookingRepository.save(booking);
-
+        //Optional<Booking> optionalBooking =  bookingRepository.save(booking);
+        return bookingRepository.save(booking);
 
 
     }

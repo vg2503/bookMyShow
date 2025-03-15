@@ -19,6 +19,38 @@ public abstract class BaseModel {
     private Date updatedAt;
     private Date updatedBy;
     private String name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Date getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Date updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 
 
