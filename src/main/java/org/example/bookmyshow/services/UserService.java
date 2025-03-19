@@ -1,6 +1,7 @@
 package org.example.bookmyshow.services;
 
 import org.example.bookmyshow.exceptions.DuplicateUserException;
+import org.example.bookmyshow.exceptions.UserNotFoundException;
 import org.example.bookmyshow.models.User;
 import org.example.bookmyshow.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -34,5 +36,20 @@ public class UserService {
         //return the user
         return userRepository.save(user);
 
+    }
+
+    public User loginUser(String email, String password) throws UserNotFoundException {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if(optionalUser.isEmpty()){
+            throw new UserNotFoundException("No User Found");
+        }
+        User user = optionalUser.get();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        if(bCryptPasswordEncoder.matches(password, user.getPassword())){
+            System.out.println("Logged in sucessfully");
+            return user;
+        }
+
+        return null;
     }
 }
